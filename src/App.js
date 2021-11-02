@@ -10,7 +10,7 @@ class App extends Component {
 
   formSubmitRegister = (data) => {
     const contacts = this.state.contacts;
-    contacts.find((elem) => elem.name === data.name)
+    contacts.find((elem) => elem.name.toLowerCase() === data.name.toLowerCase())
       ? alert(`${data.name} is alrady in contacts !`)
       : this.setState((oldState) => {
           return {
@@ -33,16 +33,9 @@ class App extends Component {
   filterContacts = () => {
     const { contacts, filter } = this.state;
     return contacts.filter((contact) => {
-      console.log(contacts);
-      console.log(contact);
-      return contact.name.includes(filter);
-      // contact.name.toLowercCase().includes(filter.toLowerCase()); //?????
+      return contact.name.toLowerCase().includes(filter.toLowerCase());
     });
   };
-
-  // filterContacts = () => {
-  //   this.state.contacts.filter.toLowerCase().includes(this.state.filter);
-  // };
 
   render = () => {
     return (
@@ -50,11 +43,10 @@ class App extends Component {
         <h1>PhoneBook</h1>
         <ContactForm onSubmit={this.formSubmitRegister} />
         <h2>Contacts:</h2>
-        <Filter onChange={this.handleFilter} title="Find content by input" />
+        <Filter onChange={this.handleFilter} title="Find contacts by name" />
         <ContactList
           removeContact={this.removeContact}
-          // arrContacts={this.state.contacts}
-          arrContacts={this.filterContacts()} //??????
+          arrContacts={this.filterContacts()}
         />
       </div>
     );

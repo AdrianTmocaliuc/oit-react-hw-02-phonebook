@@ -1,8 +1,7 @@
-// import {PropTypes } from "prop-types";
+import { PropTypes } from "prop-types";
 import style from "./ContactList.module.css";
 
 export const ContactList = ({ arrContacts, removeContact }) => {
-  // const remove = () => removeContact(id);
   return (
     <ul className={style.list}>
       {arrContacts.map(({ id, name, number }) => (
@@ -15,4 +14,15 @@ export const ContactList = ({ arrContacts, removeContact }) => {
       ))}
     </ul>
   );
+};
+
+ContactList.propTypes = {
+  arrContacts: PropTypes.arrayOf(
+    PropTypes.objectOf({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.number.isRequired,
+    })
+  ),
+  removeContact: PropTypes.func.isRequired,
 };

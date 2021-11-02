@@ -1,4 +1,3 @@
-// import {PropTypes } from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import { Component } from "react";
 
@@ -19,6 +18,7 @@ export class ContactForm extends Component {
   };
 
   handleSubmit = (event) => {
+    console.log(event);
     event.preventDefault();
     this.props.onSubmit({
       ...this.state,
