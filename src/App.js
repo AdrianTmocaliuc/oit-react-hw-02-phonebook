@@ -39,6 +39,7 @@ class App extends Component {
       // contact.name.toLowercCase().includes(filter.toLowerCase()); //?????
     });
   };
+
   // filterContacts = () => {
   //   this.state.contacts.filter.toLowerCase().includes(this.state.filter);
   // };
