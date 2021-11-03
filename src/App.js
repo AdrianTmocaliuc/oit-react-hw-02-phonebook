@@ -38,6 +38,7 @@ class App extends Component {
   };
 
   render = () => {
+    const arrContacts = this.filterContacts();
     return (
       <div className={style.section}>
         <h1>PhoneBook</h1>
@@ -46,7 +47,7 @@ class App extends Component {
         <Filter onChange={this.handleFilter} title="Find contacts by name" />
         <ContactList
           removeContact={this.removeContact}
-          arrContacts={this.filterContacts()}
+          arrContacts={arrContacts}
         />
       </div>
     );
