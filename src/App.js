@@ -8,6 +8,16 @@ class App extends Component {
     filter: "",
   };
 
+  componentDidMount() {
+    const parseContacts = JSON.parse(localStorage.getItem("Contacts"));
+    this.setState({ contacts: parseContacts });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem("Contacts", JSON.stringify(this.state.contacts));
+    }
+  }
+
   formSubmitRegister = (data) => {
     const contacts = this.state.contacts;
     contacts.find((elem) => elem.name.toLowerCase() === data.name.toLowerCase())
